@@ -2,7 +2,7 @@
   "name": "TFisher",
   "displayName": "TFisher",
   "description": "知乎摸鱼更加隐秘",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "Together",
   "icon": "Logo.png",
   "author": {
@@ -19,15 +19,28 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:FishViewItemClick"
+  ],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "Fish.First",
-        "title": "First"
-      }
-    ]
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "Fish",
+          "title": "Fish",
+          "icon": "resources/Bat.png"
+        }
+      ]
+    },
+    "views": {
+      "Fish": [
+        {
+          "id": "FishView",
+          "name": "Item"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

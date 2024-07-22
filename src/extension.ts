@@ -1,11 +1,12 @@
 import * as vscode from 'vscode';
+import { FishViewProvider } from './Core/FishViewProvider';
 
 export function activate(context: vscode.ExtensionContext) {
-	const disposable = vscode.commands.registerCommand('Fish.First', () => {
-		vscode.window.showInformationMessage('Hello World from Fish!');
-	});
+	vscode.window.registerTreeDataProvider('FishView', new FishViewProvider())
 
-	context.subscriptions.push(disposable);
+	context.subscriptions.push(vscode.commands.registerCommand('FishViewItemClick', (label) => {
+		vscode.window.showInformationMessage(label);
+	}));
 }
 
 export function deactivate() { }
