@@ -3,7 +3,16 @@
   "displayName": "TFisher",
   "description": "知乎摸鱼更加隐秘",
   "version": "0.0.1",
-  "publisher": "Together233",
+  "publisher": "Together",
+  "icon": "Logo.png",
+  "author": {
+    "name": "Together",
+    "email": "togetheryear@gmail.com"
+  },
+  "repository": {
+    "url": "https://github.com/TogetherYear/TFisher",
+    "type": "git"
+  },
   "engines": {
     "vscode": "^1.91.0"
   },
