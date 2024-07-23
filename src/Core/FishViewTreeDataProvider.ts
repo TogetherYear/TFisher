@@ -7,7 +7,7 @@ class TreeItemNode extends vscode.TreeItem {
         this.iconPath = path.join(__dirname, `../../resources/${icon}.png`)
     }
 
-    command = {
+    public command = {
         title: this.label as string,
         command: 'FishViewItemClick',
         tooltip: this.label as string,
@@ -17,12 +17,12 @@ class TreeItemNode extends vscode.TreeItem {
     }
 }
 
-class FishViewProvider implements vscode.TreeDataProvider<TreeItemNode> {
-    getTreeItem(element: TreeItemNode): vscode.TreeItem | Thenable<vscode.TreeItem> {
+class FishViewTreeDataProvider implements vscode.TreeDataProvider<TreeItemNode> {
+    public getTreeItem(element: TreeItemNode): vscode.TreeItem | Thenable<vscode.TreeItem> {
         return element;
     }
 
-    getChildren(element?: TreeItemNode | undefined): vscode.ProviderResult<TreeItemNode[]> {
+    public getChildren(element?: TreeItemNode | undefined): vscode.ProviderResult<TreeItemNode[]> {
         return ['Default'].map(
             c => new TreeItemNode(
                 c as string,
@@ -33,4 +33,4 @@ class FishViewProvider implements vscode.TreeDataProvider<TreeItemNode> {
     }
 }
 
-export { FishViewProvider }
+export { FishViewTreeDataProvider }
