@@ -18,33 +18,179 @@
 
         .App {
             position: absolute;
-            width: 100%;
+            width: calc(100% - 23px);
             height: 100%;
             top: 0;
             left: 0;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: scroll;
         }
 
-        .IFrame {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-            border: none;
-            outline: none;
+        .App::-webkit-scrollbar {
+            display: none;
+        }
+
+        .Container {
+            position: relative;
+            width: calc(100% - 12px);
+            left: 6px;
+            display: block;
+            box-sizing: border-box;
+            border: 1px solid #30343d;
+            margin-top: 6px;
+        }
+
+        .Question {
+            position: relative;
+            white-space: wrap;
+        }
+
+        .Answer {
+            position: relative;
+            white-space: wrap;
         }
     </style>
 </head>
 
 <body>
     <span class="App">
-        <iframe class="IFrame" src="https://www.zhihu.com/" frameborder="0"></iframe>
+
     </span>
 </body>
 <script>
+    class FieldObserver {
+        constructor(options) {
+            this.options = options
+            this.CreateObserver()
+        }
 
+        options;
+
+        observer = null;
+
+        isEnter = false
+
+        CreateObserver() {
+            this.observer = new IntersectionObserver((entries) => {
+                if (entries[0].intersectionRatio <= 0) {
+                    this.Hide()
+                }
+                else {
+                    this.Show()
+                }
+            })
+
+            if (this.options.dom) {
+                this.observer.observe(this.options.dom)
+            }
+        }
+
+        Show() {
+            if (!this.isEnter) {
+                this.isEnter = true
+                this.options.OnShow && this.options.OnShow()
+                if (this.options.once == undefined || this.options.once == true) {
+                    this.Destroy()
+                }
+            }
+        }
+
+        Hide() {
+            if (this.isEnter) {
+                this.isEnter = false
+                this.options.OnHide && this.options.OnHide()
+            }
+        }
+
+        Destroy() {
+            if (this.observer) {
+                this.observer.unobserve(this.options.dom)
+                this.observer = null
+            }
+        }
+    }
+
+    const app = document.querySelector('.App')
+    console.log(app.offsetWidth)
+    let isLoading = false
+    const vscode = window.acquireVsCodeApi()
+    window.addEventListener('message', (e) => {
+        OnMessage(e.data)
+    })
+    window.addEventListener('mouseup', (e) => {
+        if (e.button == 0) {
+            OnLeftMouseToggle()
+        }
+        else if (e.button == 1) {
+            OnMidMouseToggle()
+        }
+        else if (e.button == 2) {
+            OnRightMouseToggle()
+        }
+    })
+    window.addEventListener('contextmenu', (e) => {
+        e.preventDefault()
+    })
+    function OnMessage(e) {
+        if (e.type == "Plugin:Refresh") {
+            if (e.status) {
+                OnGetRefresh(e.target)
+            }
+            else {
+                SendMessage({ type: 'WebView:Error' })
+            }
+            isLoading = false
+        }
+    }
+
+    function SendMessage(e) {
+        vscode.postMessage(e)
+    }
+
+    function OnLeftMouseToggle() {
+
+    }
+
+    function OnMidMouseToggle() {
+
+    }
+
+    function OnRightMouseToggle() {
+        if (isLoading) {
+            SendMessage({ type: 'WebView:Loading' })
+        }
+        else {
+            Remove()
+            isLoading = true
+            SendMessage({ type: 'WebView:Refresh' })
+        }
+    }
+
+    function OnGetRefresh(target) {
+        for (let item of target) {
+            const container = document.createElement('div')
+            container.className = 'Container'
+            const question = document.createElement('p')
+            question.className = 'Question'
+            question.innerText = item.question
+            const answer = document.createElement('p')
+            answer.className = 'Answer'
+            answer.innerText = item.answer
+            container.append(question)
+            container.append(answer)
+            app.append(container)
+        }
+    }
+
+    function Remove() {
+        let child = app.lastElementChild
+        while (child) {
+            app.removeChild(child)
+            child = app.lastElementChild
+        }
+    }
+
+    OnRightMouseToggle()
 </script>
 
 </html>
