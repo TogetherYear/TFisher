@@ -2,7 +2,7 @@
   "name": "TFisher",
   "displayName": "TFisher",
   "description": "知乎摸鱼更加隐秘",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "publisher": "Together",
   "icon": "Logo.png",
   "author": {
@@ -28,14 +28,14 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "Fish",
-          "title": "Fish",
+          "id": "TFisher",
+          "title": "TFisher",
           "icon": "resources/Bat.png"
         }
       ]
     },
     "views": {
-      "Fish": [
+      "TFisher": [
         {
           "id": "FishView",
           "name": "FishView"
