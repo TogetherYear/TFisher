@@ -2,7 +2,7 @@
   "name": "TFisher",
   "displayName": "TFisher",
   "description": "知乎摸鱼更加隐秘",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "publisher": "Together",
   "icon": "Logo.png",
   "author": {
@@ -20,8 +20,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:FishViewItemClick",
-    "onCommand:WorkingItemClick"
+    "onCommand:TFisher.FishViewItemClick",
+    "onCommand:TFisher.WorkingItemClick"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -43,6 +43,20 @@
         {
           "id": "Working",
           "name": "Working"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "TFisher.CreateV3Component",
+        "title": "创建Vue3类组件"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "TFisher.CreateV3Component",
+          "group": "TFisher"
         }
       ]
     }

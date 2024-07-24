@@ -15,7 +15,7 @@ class FishViewTreeItemNode extends vscode.TreeItem {
 
         this.command = {
             title: this.label as string,
-            command: 'FishViewItemClick',
+            command: 'TFisher.FishViewItemClick',
             tooltip: this.label as string,
             arguments: [
                 label,

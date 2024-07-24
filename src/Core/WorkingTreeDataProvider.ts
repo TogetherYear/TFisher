@@ -2,12 +2,8 @@ import * as vscode from 'vscode';
 
 const workingTreeData = [
     {
-        label: '添加Vue3类组件',
+        label: '测试1',
         icon: 'gist-new'
-    },
-    {
-        label: '添加全局单例管理类',
-        icon: 'ports-open-browser-icon'
     },
 ]
 
@@ -19,7 +15,7 @@ class WorkingTreeItemNode extends vscode.TreeItem {
 
     public command = {
         title: this.label as string,
-        command: 'WorkingItemClick',
+        command: 'TFisher.WorkingItemClick',
         tooltip: this.label as string,
         arguments: [
             this.label,
