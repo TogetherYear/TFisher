@@ -1,8 +1,9 @@
 import { onMounted, onUnmounted } from "vue"
+import { AActor } from "@/Libs/AActor"
 
-class $0 {
+class $0 extends AActor {
     public constructor() {
-
+        super()
     }
 
     public InitStates() {
@@ -25,7 +26,7 @@ class $0 {
         })
     }
 
-    protected Destroy() {
+    public Destroy() {
 
     }
 }
