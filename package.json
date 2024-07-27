@@ -1,86 +1,89 @@
 {
-  "name": "TFisher",
-  "displayName": "TFisher",
-  "description": "便于作者本人编码习惯",
-  "version": "0.0.7",
-  "publisher": "Together",
-  "icon": "Logo.png",
-  "author": {
-    "name": "Together",
-    "email": "togetheryear@gmail.com"
-  },
-  "repository": {
-    "url": "https://github.com/TogetherYear/TFisher",
-    "type": "git"
-  },
-  "engines": {
-    "vscode": "^1.91.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "onCommand:TFisher.FishViewItemClick",
-    "onCommand:TFisher.WorkingItemClick"
-  ],
-  "main": "./out/extension.js",
-  "contributes": {
-    "viewsContainers": {
-      "activitybar": [
-        {
-          "id": "TFisher",
-          "title": "TFisher",
-          "icon": "resources/Bat.png"
-        }
-      ]
+    "name": "TFisher",
+    "displayName": "TFisher",
+    "description": "便于作者本人编码习惯",
+    "version": "0.0.8",
+    "publisher": "Together",
+    "icon": "Logo.png",
+    "author": {
+        "name": "Together",
+        "email": "togetheryear@gmail.com"
     },
-    "views": {
-      "TFisher": [
-        {
-          "id": "FishView",
-          "name": "FishView"
-        },
-        {
-          "id": "Working",
-          "name": "Working"
-        }
-      ]
+    "repository": {
+        "url": "https://github.com/TogetherYear/TFisher",
+        "type": "git"
     },
-    "commands": [
-      {
-        "command": "TFisher.CreateV3Component",
-        "title": "创建Vue3类组件"
-      }
+    "engines": {
+        "vscode": "^1.91.0"
+    },
+    "categories": [
+        "Other"
     ],
-    "menus": {
-      "explorer/context": [
-        {
-          "command": "TFisher.CreateV3Component",
-          "group": "TFisher"
+    "activationEvents": [
+        "onCommand:TFisher.FishViewItemClick",
+        "onCommand:TFisher.WorkingItemClick"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "TFisher",
+                    "title": "TFisher",
+                    "icon": "resources/Bat.png"
+                }
+            ]
+        },
+        "views": {
+            "TFisher": [
+                {
+                    "id": "FishView",
+                    "name": "FishView"
+                },
+                {
+                    "id": "Working",
+                    "name": "Working"
+                }
+            ]
+        },
+        "commands": [
+            {
+                "command": "TFisher.CreateV3Component",
+                "title": "创建Vue3类组件"
+            }
+        ],
+        "menus": {
+            "explorer/context": [
+                {
+                    "command": "TFisher.CreateV3Component",
+                    "group": "TFisher"
+                }
+            ]
         }
-      ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "prettier:all": "prettier --write .",
+        "prettier": "prettier --write",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "vscode-test"
+    },
+    "devDependencies": {
+        "@types/mocha": "^10.0.7",
+        "@types/node": "20.x",
+        "@types/vscode": "^1.91.0",
+        "@typescript-eslint/eslint-plugin": "^7.14.1",
+        "@typescript-eslint/parser": "^7.11.0",
+        "@vscode/test-cli": "^0.0.9",
+        "@vscode/test-electron": "^2.4.0",
+        "eslint": "^8.57.0",
+        "prettier": "^3.3.3",
+        "typescript": "^5.4.5"
+    },
+    "dependencies": {
+        "axios": "^1.7.2"
     }
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src --ext ts",
-    "test": "vscode-test"
-  },
-  "devDependencies": {
-    "@types/mocha": "^10.0.7",
-    "@types/node": "20.x",
-    "@types/vscode": "^1.91.0",
-    "@typescript-eslint/eslint-plugin": "^7.14.1",
-    "@typescript-eslint/parser": "^7.11.0",
-    "@vscode/test-cli": "^0.0.9",
-    "@vscode/test-electron": "^2.4.0",
-    "eslint": "^8.57.0",
-    "typescript": "^5.4.5"
-  },
-  "dependencies": {
-    "axios": "^1.7.2"
-  }
 }

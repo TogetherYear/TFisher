@@ -1,34 +1,26 @@
-import { onMounted, onUnmounted } from "vue"
-import { AActor } from "@/Libs/AActor"
+import { onMounted, onUnmounted } from 'vue';
+import { Component } from '@/Libs/Component';
 
-class $0 extends AActor {
+class $0 extends Component {
     public constructor() {
-        super()
+        super();
     }
 
     public InitStates() {
-        return {
-
-        }
+        return {};
     }
 
-    public InitHooks() {
-
-    }
+    public InitHooks() {}
 
     public Run() {
-        onMounted(() => {
-
-        })
+        onMounted(() => {});
 
         onUnmounted(() => {
-            this.Destroy()
-        })
+            this.Destroy();
+        });
     }
 
-    public Destroy() {
-
-    }
+    public Destroy() {}
 }
 
-export { $0 }
+export { $0 };
