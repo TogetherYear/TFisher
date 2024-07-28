@@ -27,10 +27,7 @@ class WorkingTreeDataProvider implements vscode.TreeDataProvider<WorkingTreeItem
     }
 
     public getChildren(element?: WorkingTreeItemNode | undefined): vscode.ProviderResult<WorkingTreeItemNode[]> {
-        return workingTreeData.map(
-            (c) =>
-                new WorkingTreeItemNode(c.label as string, vscode.TreeItemCollapsibleState.None as vscode.TreeItemCollapsibleState, c.icon)
-        );
+        return workingTreeData.map((c) => new WorkingTreeItemNode(c.label as string, vscode.TreeItemCollapsibleState.None as vscode.TreeItemCollapsibleState, c.icon));
     }
 }
 

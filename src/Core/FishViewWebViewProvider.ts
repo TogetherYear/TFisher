@@ -25,9 +25,7 @@ class FishViewWebViewProvider {
                 retainContextWhenHidden: true,
                 enableScripts: true
             });
-            webViewPanel.webview.html = fs
-                .readFileSync(path.join(this.context.extensionPath, `/resources/FishViewWebView.html`), 'utf-8')
-                .toString();
+            webViewPanel.webview.html = fs.readFileSync(path.join(this.context.extensionPath, `/resources/FishViewWebView.html`), 'utf-8').toString();
         }
         webViewPanel.iconPath = vscode.Uri.file(path.join(this.context.extensionPath, `/resources/Acquiescent.png`));
 
