@@ -8,28 +8,23 @@ import { FishViewWebViewProvider } from './Core/FishViewWebViewProvider';
 export function activate(context: vscode.ExtensionContext) {
     vscode.window.registerTreeDataProvider('FishView', new FishViewTreeDataProvider());
     context.subscriptions.push(
-        vscode.commands.registerCommand('TFisher.FishViewItemClick', (label, icon: string) => {
-            const webview = FishViewWebViewProvider.Generate(
-                context,
-                vscode.ViewColumn.Active,
-                label,
-                icon
-            );
-            context.subscriptions.push(webview);
-        })
+        vscode.commands.registerCommand('TFisher.FishViewItemClick', (label, icon: string) => {})
     );
 
     vscode.window.registerTreeDataProvider('Working', new WorkingTreeDataProvider());
     context.subscriptions.push(
-        vscode.commands.registerCommand('TFisher.WorkingItemClick', async (label) => {
-            if (label == '测试1') {
-            }
-        })
+        vscode.commands.registerCommand('TFisher.WorkingItemClick', async (label) => {})
     );
 
     context.subscriptions.push(
         vscode.commands.registerCommand('TFisher.CreateV3Component', (uri: vscode.Uri) => {
             CreateV3Component(uri);
+        })
+    );
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('TFisher.CreateTFisherWebView', (uri: vscode.Uri) => {
+            CreateTFisherWebView(context);
         })
     );
 }
@@ -66,6 +61,11 @@ const CreateV3Component = (uri: vscode.Uri) => {
             });
         }
     });
+};
+
+const CreateTFisherWebView = (context: vscode.ExtensionContext) => {
+    const webview = FishViewWebViewProvider.Generate(context, vscode.ViewColumn.Active);
+    context.subscriptions.push(webview);
 };
 
 export function deactivate() {}

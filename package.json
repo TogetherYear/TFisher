@@ -50,6 +50,10 @@
             {
                 "command": "TFisher.CreateV3Component",
                 "title": "创建Vue3类组件"
+            },
+            {
+                "command": "TFisher.CreateTFisherWebView",
+                "title": "创建WebView测试"
             }
         ],
         "submenus": [
@@ -68,6 +72,10 @@
             "TFisher/TFisher": [
                 {
                     "command": "TFisher.CreateV3Component",
+                    "group": "TFisher"
+                },
+                {
+                    "command": "TFisher.CreateTFisherWebView",
                     "group": "TFisher"
                 }
             ]

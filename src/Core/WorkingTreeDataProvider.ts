@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 
 const workingTreeData = [
     {
-        label: '测试1',
+        label: 'Working_Test',
         icon: 'gist-new'
     }
 ];

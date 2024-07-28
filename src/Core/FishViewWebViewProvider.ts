@@ -6,16 +6,9 @@ import A from 'axios';
 let webViewPanel: vscode.WebviewPanel | null = null;
 
 class FishViewWebViewProvider {
-    private constructor(
-        context: vscode.ExtensionContext,
-        viewColumn: vscode.ViewColumn,
-        label: string,
-        icon: string
-    ) {
+    private constructor(context: vscode.ExtensionContext, viewColumn: vscode.ViewColumn) {
         this.context = context;
         this.viewColumn = viewColumn;
-        this.label = label;
-        this.icon = icon;
         this.CreateView();
     }
 
@@ -23,18 +16,14 @@ class FishViewWebViewProvider {
 
     private viewColumn: vscode.ViewColumn;
 
-    private label: string;
-
-    private icon: string;
-
     private CreateView() {
         if (webViewPanel) {
-            webViewPanel.title = this.label;
+            webViewPanel.title = 'WebView';
             webViewPanel.reveal();
         } else {
             webViewPanel = vscode.window.createWebviewPanel(
                 'FishViewWebViewProvider',
-                this.label,
+                'WebView',
                 this.viewColumn,
                 {
                     retainContextWhenHidden: true,
@@ -49,7 +38,7 @@ class FishViewWebViewProvider {
                 .toString();
         }
         webViewPanel.iconPath = vscode.Uri.file(
-            path.join(this.context.extensionPath, `/resources/${this.icon}.png`)
+            path.join(this.context.extensionPath, `/resources/Acquiescent.png`)
         );
 
         webViewPanel.webview.onDidReceiveMessage((e) => {
@@ -112,13 +101,8 @@ class FishViewWebViewProvider {
         });
     }
 
-    public static Generate(
-        context: vscode.ExtensionContext,
-        viewColumn: vscode.ViewColumn,
-        label: string,
-        icon: string
-    ) {
-        const current = new FishViewWebViewProvider(context, viewColumn, label, icon);
+    public static Generate(context: vscode.ExtensionContext, viewColumn: vscode.ViewColumn) {
+        const current = new FishViewWebViewProvider(context, viewColumn);
         return webViewPanel as vscode.WebviewPanel;
     }
 }

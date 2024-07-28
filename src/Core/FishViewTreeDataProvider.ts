@@ -1,17 +1,16 @@
 import * as vscode from 'vscode';
-import * as path from 'path';
 
 const fishViewTreeData = [
     {
-        label: '默认显示',
-        icon: 'Acquiescent'
+        label: 'FishView_Test',
+        icon: 'gist-new'
     }
 ];
 
 class FishViewTreeItemNode extends vscode.TreeItem {
     constructor(label: string, collapsibleState: vscode.TreeItemCollapsibleState, icon: string) {
         super(label, collapsibleState);
-        this.iconPath = vscode.Uri.file(path.join(__dirname, `../../resources/${icon}.png`));
+        this.iconPath = new vscode.ThemeIcon(icon);
 
         this.command = {
             title: this.label as string,
