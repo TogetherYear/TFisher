@@ -52,8 +52,20 @@
                 "title": "创建Vue3类组件"
             }
         ],
+        "submenus": [
+            {
+                "id": "TFisher/TFisher",
+                "label": "TFisher"
+            }
+        ],
         "menus": {
             "explorer/context": [
+                {
+                    "submenu": "TFisher/TFisher",
+                    "group": "TFisher"
+                }
+            ],
+            "TFisher/TFisher": [
                 {
                     "command": "TFisher.CreateV3Component",
                     "group": "TFisher"
