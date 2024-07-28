@@ -26,16 +26,10 @@ class FishViewTreeDataProvider implements vscode.TreeDataProvider<FishViewTreeIt
         return element;
     }
 
-    public getChildren(
-        element?: FishViewTreeItemNode | undefined
-    ): vscode.ProviderResult<FishViewTreeItemNode[]> {
+    public getChildren(element?: FishViewTreeItemNode | undefined): vscode.ProviderResult<FishViewTreeItemNode[]> {
         return fishViewTreeData.map(
             (c) =>
-                new FishViewTreeItemNode(
-                    c.label as string,
-                    vscode.TreeItemCollapsibleState.None as vscode.TreeItemCollapsibleState,
-                    c.icon
-                )
+                new FishViewTreeItemNode(c.label as string, vscode.TreeItemCollapsibleState.None as vscode.TreeItemCollapsibleState, c.icon)
         );
     }
 }

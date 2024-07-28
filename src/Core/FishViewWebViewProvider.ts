@@ -21,25 +21,15 @@ class FishViewWebViewProvider {
             webViewPanel.title = 'WebView';
             webViewPanel.reveal();
         } else {
-            webViewPanel = vscode.window.createWebviewPanel(
-                'FishViewWebViewProvider',
-                'WebView',
-                this.viewColumn,
-                {
-                    retainContextWhenHidden: true,
-                    enableScripts: true
-                }
-            );
+            webViewPanel = vscode.window.createWebviewPanel('FishViewWebViewProvider', 'WebView', this.viewColumn, {
+                retainContextWhenHidden: true,
+                enableScripts: true
+            });
             webViewPanel.webview.html = fs
-                .readFileSync(
-                    path.join(this.context.extensionPath, `/resources/FishViewWebView.html`),
-                    'utf-8'
-                )
+                .readFileSync(path.join(this.context.extensionPath, `/resources/FishViewWebView.html`), 'utf-8')
                 .toString();
         }
-        webViewPanel.iconPath = vscode.Uri.file(
-            path.join(this.context.extensionPath, `/resources/Acquiescent.png`)
-        );
+        webViewPanel.iconPath = vscode.Uri.file(path.join(this.context.extensionPath, `/resources/Acquiescent.png`));
 
         webViewPanel.webview.onDidReceiveMessage((e) => {
             this.OnMessage(e);
@@ -81,9 +71,7 @@ class FishViewWebViewProvider {
 
     private RefreshNew() {
         return new Promise((resolve, reject) => {
-            A.get(
-                'https://www.zhihu.com/api/v3/feed/topstory/recommend?action=down&ad_interval=-10&desktop=true'
-            )
+            A.get('https://www.zhihu.com/api/v3/feed/topstory/recommend?action=down&ad_interval=-10&desktop=true')
                 .then((res) => {
                     const target = res.data.data;
                     const result = [];
