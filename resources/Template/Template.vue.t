@@ -11,8 +11,6 @@ const {
 
 } = instance.InitStates()
 
-instance.InitHooks()
-
 instance.Run()
 </script>
 

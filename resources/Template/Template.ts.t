@@ -10,8 +10,6 @@ class $0 extends Component {
         return {};
     }
 
-    public InitHooks() {}
-
     public Run() {
         onMounted(() => {});
 
